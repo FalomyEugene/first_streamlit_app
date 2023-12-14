@@ -15,7 +15,7 @@ my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.co
 my_fruit_list = my_fruit_list.set_index('Fruit')
 #streamlit.dataframe(my_fruit_list)
 
-# Let's put a pick lisy here so they can pick the fruit they want to to include
+# Let's put a pick list here so they can pick the fruit they want to to include
 fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index), ['Avocado', 'Strawberries'])
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 
@@ -46,3 +46,8 @@ my_cur.execute("select * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.header("The fruit load list contains:")
 streamlit.dataframe(my_data_rows)
+
+# Allow the end user to add a fruit to the list
+fruit_choice1 = streamlit.text_input('What fruit would you like to add?','jackfruit')
+streamlit.write('Thanks for adding', fruit_choice1)
+
